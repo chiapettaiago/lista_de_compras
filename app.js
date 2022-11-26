@@ -51,7 +51,7 @@ function criarTagLi(tarefa) {
     let btnExcluir = document.createElement('button'); 
     btnExcluir.classList.add('btnAcao');
     btnExcluir.innerHTML = '<i class="fa fa-trash"></i>';
-    btnExcluir.setAttribute('onclick', `excluir(`+ tarefa.id+`)`);
+    btnExcluir.setAttribute('onclick', 'excluir('+ tarefa.id+')');
 
     div.appendChild(btnEditar);
     div.appendChild(btnExcluir);
