@@ -1,6 +1,11 @@
 let inputNovoItem = document.querySelector('#inputNovoItem');
 let btnAddTarefa = document.querySelector('#btnAddTarefa');
 let listaTarefas = document.querySelector('#listaTarefas');
+let janelaEdicao = document.querySelector('#janelaEdicao');
+let janelaEdicaoFundo = document.querySelector('#janelaEdicaoFundo');
+let janelaEdicaoBtnFechar = document.querySelector('#janelaEdicaoBtnFechar');
+let btnAtualizarTarefa = document.querySelector('#btnAtualizarTarefa');
+let idTarefaEdicao = document.querySelector('#idTarefaEdicao');
 
 inputNovoItem.addEventListener('keypress', (e) => {
 
@@ -15,12 +20,20 @@ inputNovoItem.addEventListener('keypress', (e) => {
     }
 });
 
+janelaEdicaoBtnFechar.addEventListener('click', (e) => {
+    alternarJanelaEdicao();
+})
+
 btnAddTarefa.addEventListener('click', (e) => {
     let tarefa = {
         nome: inputNovoItem.value,
         id: gerarId(),
     }
     adicionarTarefa(tarefa);
+
+})
+
+btnAtualizarTarefa.addEventListener('click', (e) => {
 
 })
 
@@ -65,6 +78,13 @@ function criarTagLi(tarefa) {
 
 function editar(idTarefa) {
     alert(idTarefa);
+
+    let li = document.getElementById(''+ idTarefa + '');
+    if(li) {
+        idTarefaEdicao.innerHTML = '#' + idTarefa;
+        alternarJanelaEdicao();
+
+    }
 }
 
 function excluir(idTarefa) {
@@ -75,4 +95,9 @@ function excluir(idTarefa) {
             listaTarefas.removeChild(li);
         }
     }
+}
+
+function alternarJanelaEdicao() {
+    janelaEdicao.classList.toogle('abrir');
+    janelaEdicaoFundo.classList.toogle('abrir');
 }
